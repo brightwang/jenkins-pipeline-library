@@ -60,11 +60,11 @@ xml=new File('${env.WORKSPACE}/build.xml').text
 gen=new com.brightwang.GeneralBuildXml(xml)
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write(xml)
-gen.excludeDir(a)
+//gen.excludeDir(a)
 }
 def excludeFile(String[] a){
 new File("${env.WORKSPACE}/testFile").write(xml)
-gen.excludeFile(a)
+//gen.excludeFile(a)
 }
 ${dsl}
 """)
