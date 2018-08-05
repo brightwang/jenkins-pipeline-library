@@ -21,8 +21,8 @@ def call() {
     def binding = new Binding()
     def g = new GeneralBuildXml(xml)
     def writer = new StringWriter()
-    binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
-    binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
+    //binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
+    //binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
     binding.setProperty('transfer', new MethodClosure(g, 'transfer'))
     binding.setVariable('g', g)
     binding.setProperty("out", new PrintWriter(writer))
@@ -53,6 +53,12 @@ def call() {
     conf.addCompilationCustomizers(customizer);
     println(new GroovyShell(binding))
     def d = new GroovyShell(binding, conf).parse('''\
+def excludeDir(String[] a){
+new File("${env.WORKSPACE}/testDir").write('dir')
+}
+def excludeFile(String[] a){
+new File("${env.WORKSPACE}/testFile").write('file')
+}
 ${dsl}
 ''')
     new GroovyShell(binding, conf).evaluate(dsl)
