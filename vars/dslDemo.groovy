@@ -53,6 +53,7 @@ def call() {
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
     def d = new GroovyShell(binding).evaluate("""\
+xml=${xml}
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write('dir')
 g.excludeDir(a)
