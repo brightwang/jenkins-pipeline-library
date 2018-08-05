@@ -53,7 +53,7 @@ def call() {
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
     def d = new GroovyShell(binding).evaluate("""\
-xml=new File('${env.WORKSPACE}/build.xml')
+xml=new File('${env.WORKSPACE}/build.xml').text
 def gen=new GeneralBuildXml(xml)
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write(xml)
