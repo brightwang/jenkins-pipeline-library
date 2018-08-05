@@ -51,8 +51,17 @@ def call() {
             "java.lang.Object",'java.io.File'
     ));
     conf.addCompilationCustomizers(customizer);
-    println(new GroovyShell(binding))
-    def d = new GroovyShell(binding, conf).evaluate('''\
+//    println(new GroovyShell(binding))
+    println('''\
+def excludeDir(String[] a){
+new File("${env.WORKSPACE}/testDir").write('dir')
+}
+def excludeFile(String[] a){
+new File("${env.WORKSPACE}/testFile").write('file')
+}
+${dsl}
+''')
+    def d = new GroovyShell().evaluate('''\
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write('dir')
 }
