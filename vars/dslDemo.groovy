@@ -3,8 +3,10 @@ import org.codehaus.groovy.control.customizers.SecureASTCustomizer
 import org.codehaus.groovy.runtime.MethodClosure
 
 import static org.codehaus.groovy.syntax.Types.EQUAL
-import static org.codeha.us.groovy.syntax.Types.PLUS
+import static org.codeha.us.groovy.syntax.Types.*
 import com.brightwang.GeneralBuildXml
+
+import static org.codehaus.groovy.syntax.Types.PLUS_PLUS
 
 def call() {
     xml = """<?xml version="1.0" encoding="UTF-8"?>
@@ -34,7 +36,7 @@ def call() {
         // 用户能找到的令牌列表
         //org.codehaus.groovy.syntax.Types 中所定义的常量
         tokensWhitelist = [
-                PLUS,
+                PLUS_PLUS,
                 EQUAL
         ].asImmutable()
         //将用户所能定义的常量类型限制为数值类型
