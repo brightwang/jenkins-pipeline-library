@@ -17,7 +17,7 @@ def call() {
 """
     env.WORKSPACE = pwd()
     file = new File("${env.WORKSPACE}/deploy.dsl")
-    dsl=file.text
+    dsl = file.text
     def binding = new Binding()
     def g = new GeneralBuildXml(xml)
     def writer = new StringWriter()
@@ -48,19 +48,10 @@ def call() {
     }
 
     customizer.setReceiversWhiteList(Arrays.asList(
-            "java.lang.Object",'java.io.File'
+            "java.lang.Object", 'java.io.File'
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
-    println("""\
-def excludeDir(String[] a){
-new File("${env.WORKSPACE}/testDir").write('dir')
-}
-def excludeFile(String[] a){
-new File("${env.WORKSPACE}/testFile").write('file')
-}
-${dsl}
-""")
     def d = new GroovyShell().evaluate("""\
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write('dir')
