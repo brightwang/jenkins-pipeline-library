@@ -57,7 +57,7 @@ def call() {
 import com.brightwang.GeneralBuildXml
 
 xml=new File('${env.WORKSPACE}/build.xml').text
-def gen=new com.brightwang.GeneralBuildXml(xml)
+gen=new com.brightwang.GeneralBuildXml(xml)
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write(xml)
 gen.excludeDir(a)
