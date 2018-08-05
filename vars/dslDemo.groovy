@@ -54,11 +54,11 @@ def call() {
 //    println(new GroovyShell(binding))
     def d = new GroovyShell(binding).evaluate("""\
 def excludeDir(String[] a){
-//new File("${env.WORKSPACE}/testDir").write('dir')
+new File("${env.WORKSPACE}/testDir").write('dir')
 g.excludeDir(a)
 }
 def excludeFile(String[] a){
-//new File("${env.WORKSPACE}/testFile").write('file')
+new File("${env.WORKSPACE}/testFile").write('file')
 g.excludeFile(a)
 }
 ${dsl}
