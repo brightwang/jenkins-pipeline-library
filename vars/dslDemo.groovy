@@ -3,7 +3,8 @@ import org.codehaus.groovy.control.customizers.SecureASTCustomizer
 import org.codehaus.groovy.runtime.MethodClosure
 
 import static org.codehaus.groovy.syntax.Types.EQUAL
-import static org.codehaus.groovy.syntax.Types.PLUS
+import static org.codeha.us.groovy.syntax.Types.PLUS
+import com.brightwang.GeneralBuildXml
 
 def call() {
     xml = """<?xml version="1.0" encoding="UTF-8"?>
