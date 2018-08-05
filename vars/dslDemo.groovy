@@ -48,7 +48,7 @@ def call() {
     }
 
     customizer.setReceiversWhiteList(Arrays.asList(
-            "java.lang.Object"
+            "java.lang.Object",'java.io.File'
     ));
     conf.addCompilationCustomizers(customizer);
     println(new GroovyShell(binding))
