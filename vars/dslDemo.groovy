@@ -32,7 +32,7 @@ def call() {
         closuresAllowed = true // 用户能写闭包
         methodDefinitionAllowed = true // 用户能定义方法
         importsWhitelist = [] // 白名单为空意味着不允许导入
-        staticImportsWhitelist = [] // 同样，对于静态导入也是这样
+        staticImportsWhitelist = ['com.brightwang.GeneralBuildXml'] // 同样，对于静态导入也是这样
         staticStarImportsWhitelist = ['java.lang.Math', 'java.lang.String', 'java.lang.Object', 'com.brightwang.GeneralBuildXml']
         // 用户能找到的令牌列表
         //org.codehaus.groovy.syntax.Types 中所定义的常量
@@ -44,11 +44,12 @@ def call() {
         constantTypesClassesWhiteList = [
                 String.class,
                 Object.class,
+                GeneralBuildXml.class
         ].asImmutable()
     }
 
     customizer.setReceiversWhiteList(Arrays.asList(
-            "java.lang.Object", 'java.io.File'
+            "java.lang.Object", 'java.io.File','com.brightwang.GeneralBuildXml'
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
