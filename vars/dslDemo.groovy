@@ -56,7 +56,7 @@ def call() {
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write('dir')
 }
-def excludeFile(String[] a){
+def excludeFile(String a){
 new File("${env.WORKSPACE}/testFile").write('file')
 }
 ${dsl}
