@@ -32,8 +32,8 @@ def call() {
         closuresAllowed = true // 用户能写闭包
         methodDefinitionAllowed = true // 用户能定义方法
         importsWhitelist = [] // 白名单为空意味着不允许导入
-        //staticImportsWhitelist = [] // 同样，对于静态导入也是这样
-        //staticStarImportsWhitelist = ['java.lang.Math', 'java.lang.String', 'java.lang.Object', 'GeneralBuildXml']
+        staticImportsWhitelist = [] // 同样，对于静态导入也是这样
+        staticStarImportsWhitelist = ['java.lang.Math', 'java.lang.String', 'java.lang.Object', 'GeneralBuildXml']
         // 用户能找到的令牌列表
         //org.codehaus.groovy.syntax.Types 中所定义的常量
         tokensWhitelist = [
@@ -54,10 +54,12 @@ def call() {
 //    println(new GroovyShell(binding))
     def d = new GroovyShell().evaluate("""\
 def excludeDir(String[] a){
-new File("${env.WORKSPACE}/testDir").write('dir')
+//new File("${env.WORKSPACE}/testDir").write('dir')
+g.excludeDir(a)
 }
 def excludeFile(String[] a){
-new File("${env.WORKSPACE}/testFile").write('file')
+//new File("${env.WORKSPACE}/testFile").write('file')
+g.excludeFile(a)
 }
 ${dsl}
 """)
