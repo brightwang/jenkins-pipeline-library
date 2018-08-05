@@ -56,10 +56,10 @@ def call() {
     def d = new GroovyShell(binding).evaluate("""\
 println(xml)
 def excludeDir(String[] a){
-new File("${env.WORKSPACE}/testDir").write(xml)
+new File("${env.WORKSPACE}/testDir").write(this.binding.getVariable("xml"))
 }
 def excludeFile(String[] a){
-new File("${env.WORKSPACE}/testFile").write(xml)
+new File("${env.WORKSPACE}/testFile").write(this.binding.getVariable("xml"))
 g.excludeFile(a)
 }
 ${dsl}
