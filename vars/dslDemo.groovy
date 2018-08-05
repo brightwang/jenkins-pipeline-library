@@ -52,7 +52,7 @@ def call() {
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
-    def d = new GroovyShell().evaluate("""\
+    def d = new GroovyShell(binding).evaluate("""\
 def excludeDir(String[] a){
 //new File("${env.WORKSPACE}/testDir").write('dir')
 g.excludeDir(a)
