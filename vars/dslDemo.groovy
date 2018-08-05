@@ -52,7 +52,9 @@ def call() {
     ));
     conf.addCompilationCustomizers(customizer);
     println(new GroovyShell(binding))
-    def d = new GroovyShell(binding, conf).parse(dsl)
+    def d = new GroovyShell(binding, conf).parse('''\
+${dsl}
+''')
     new GroovyShell(binding, conf).evaluate(dsl)
     println(g.getXmlString())
 }
