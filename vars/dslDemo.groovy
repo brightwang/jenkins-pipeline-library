@@ -25,7 +25,6 @@ def call() {
     //binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
     binding.setProperty('transfer', new MethodClosure(g, 'transfer'))
     binding.setVariable('g', g)
-    binding.setVariable('xml', xml)
     binding.setProperty("out", new PrintWriter(writer))
     CompilerConfiguration conf = new CompilerConfiguration();
     SecureASTCustomizer customizer = new SecureASTCustomizer();
@@ -54,13 +53,15 @@ def call() {
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
     def d = new GroovyShell(binding).evaluate("""\
-println(xml)
+xml=new File('${env.WORKSPACE}/build.xml')
+def gen=new GeneralBuildXml(xml)
 def excludeDir(String[] a){
-new File("${env.WORKSPACE}/testDir").write(this.binding.getVariable("xml"))
+new File("${env.WORKSPACE}/testDir").write(xml)
+gen.excludeDir(a)
 }
 def excludeFile(String[] a){
-new File("${env.WORKSPACE}/testFile").write(this.binding.getVariable("xml"))
-g.excludeFile(a)
+new File("${env.WORKSPACE}/testFile").write(xml)
+gen.excludeFile(a)
 }
 ${dsl}
 """)
