@@ -52,7 +52,7 @@ def call() {
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
-    println('''\
+    println("""\
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write('dir')
 }
@@ -60,8 +60,8 @@ def excludeFile(String[] a){
 new File("${env.WORKSPACE}/testFile").write('file')
 }
 ${dsl}
-''')
-    def d = new GroovyShell().evaluate('''\
+""")
+    def d = new GroovyShell().evaluate("""\
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write('dir')
 }
@@ -69,7 +69,7 @@ def excludeFile(String[] a){
 new File("${env.WORKSPACE}/testFile").write('file')
 }
 ${dsl}
-''')
+""")
     println(g.getXmlString())
 }
 
