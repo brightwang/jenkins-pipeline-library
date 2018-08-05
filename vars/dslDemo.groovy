@@ -55,20 +55,21 @@ def call() {
 //    println(new GroovyShell(binding))
     def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
 import com.brightwang.GeneralBuildXml
+config=["excludeDir":[],"excludeFile":[]]
 
 xml=new File('${env.WORKSPACE}/build.xml').text
-gen=new com.brightwang.GeneralBuildXml(xml)
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write(xml)
-//gen.excludeDir(a)
+config["excludeDir"]=a
 }
 def excludeFile(String[] a){
 new File("${env.WORKSPACE}/testFile").write(xml)
-//gen.excludeFile(a)
+config["excludeFile"]=a
 }
 ${dsl}
 """)
     println(g.getXmlString())
+    println(binding.getVariable('config'))
 }
 
 return this
