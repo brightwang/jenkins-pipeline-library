@@ -53,7 +53,9 @@ def call() {
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
-    def d = new GroovyShell(binding).evaluate("""\
+    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
+import com.brightwang.GeneralBuildXml
+
 xml=new File('${env.WORKSPACE}/build.xml').text
 def gen=new com.brightwang.GeneralBuildXml(xml)
 def excludeDir(String[] a){
