@@ -69,7 +69,7 @@ config["excludeFile"]=a
 ${dsl}
 """)
     println(g.getXmlString())
-    println(binding.getVariable('config')["excludeDir"])
+    println(binding.getVariable('config')["excludeDir"].each {echo it})
 }
 
 return this
