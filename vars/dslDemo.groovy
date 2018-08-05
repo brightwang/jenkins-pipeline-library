@@ -13,7 +13,6 @@ def call() {
     </target>
 </project>
 """
-
     dsl = new File('./deploy.dsl').text
     def binding = new Binding()
     def g = new GeneralBuildXml(xml)
