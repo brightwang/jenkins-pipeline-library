@@ -23,7 +23,7 @@ def call() {
     def g = new GeneralBuildXml(xml)
     def writer = new StringWriter()
     //binding.setProperty('excludeDir', new MethodClosure(excludeDir, 'excludeDir'))
-    binding.setProperty('excludeFile', new MethodClosure(excludeFile, 'excludeFile'))
+    //binding.setProperty('excludeFile', new MethodClosure(excludeFile, 'excludeFile'))
     binding.setProperty('transfer', new MethodClosure(g, 'transfer'))
     binding.setVariable('g', g)
     binding.setProperty("out", new PrintWriter(writer))
