@@ -88,7 +88,15 @@ def call() {
 //import  com.brightwang.ScriptBase
 //${dsl}
 //""")
-    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""\
+    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""
+import com.brightwang.Exclude
+
+def exclude(Closure cl){
+    e=new Exclude()
+    def code = cl.rehydrate(e, this, this)
+    code.resolveStrategy = Closure.DELEGATE_ONLY
+    code()
+}
 ${dsl}
 """
     )
