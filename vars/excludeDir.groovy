@@ -1,5 +1,5 @@
 def call(String[] dirs) {
-    $method = "excludeDir"
+    def method = "excludeDir"
     env.generalBuildXml."$method"(dirs)
 }
 
