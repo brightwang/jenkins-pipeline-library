@@ -37,11 +37,11 @@ class GeneralBuildXml {
 //        }
 //        return this
 //    }
-    static void excludeDir(String[] dirs){
+    static void excludeDir(dirs){
 
     }
 
-    static void excludeFile(String[] files){
+    static void excludeFile(files){
 
     }
 
