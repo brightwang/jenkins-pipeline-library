@@ -26,10 +26,7 @@ class Helper {
         return json
     }
 
-    static Runner(file){
-        use(GeneralBuildXml) {
-            def c= this.classLoader.parseClass(file as File).newInstance()
-            c.run()
-        }
+    static Runner(file) {
+        this.classLoader.parseClass(file as File).newInstance().run()
     }
 }
