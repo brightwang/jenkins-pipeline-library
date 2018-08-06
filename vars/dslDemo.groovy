@@ -68,7 +68,9 @@ def call() {
 //}
 //${dsl}
 //""")
-    println(new GroovyClassLoader().parseClass(file).newInstance().run())
+    use(GeneralBuildXml) {
+        println(new GroovyClassLoader().parseClass(file).newInstance().run())
+    }
     println(g.getXmlString())
     println(binding.getVariable('config')["excludeDir"].each {echo it})
 }
