@@ -88,7 +88,7 @@ def call() {
 //import  com.brightwang.ScriptBase
 //${dsl}
 //""")
-    new GroovyShell(binding,conf).evaluate("""\
+    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""\
 ${dsl}
 """
     )
