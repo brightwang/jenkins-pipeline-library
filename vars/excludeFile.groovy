@@ -1,7 +1,7 @@
 def call(String[] files) {
     def method = 'excludeFile'
-    echo env.generalBuildXml.class.toString()
-    env.generalBuildXml."${method}"(files)
+    g=env.generalBuildXml as com.brightwang.GeneralBuildXml
+    g."${method}"(files)
 }
 
 return this
