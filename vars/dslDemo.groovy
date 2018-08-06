@@ -50,33 +50,29 @@ def call() {
     }
 
     customizer.setReceiversWhiteList(Arrays.asList(
-            "java.lang.Object", 'java.io.File','com.brightwang.GeneralBuildXml'
+            "java.lang.Object", 'java.io.File', 'com.brightwang.GeneralBuildXml'
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
-//    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
-//import com.brightwang.GeneralBuildXml
-//config=["excludeDir":[],"excludeFile":[]]
-//
-//xml=new File('${env.WORKSPACE}/build.xml').text
-//def excludeDir(String[] a){
-//new File("${env.WORKSPACE}/testDir").write(xml)
-//config["excludeDir"]=a
-//}
-//def excludeFile(String[] a){
-//new File("${env.WORKSPACE}/testFile").write(xml)
-//config["excludeFile"]=a
-//}
-//${dsl}
-//""")
+    def d = new GroovyShell(this.class.classLoader, binding).evaluate("""\
+import com.brightwang.GeneralBuildXml
+config=["excludeDir":[],"excludeFile":[]]
+
+xml=new File('${env.WORKSPACE}/build.xml').text
+def excludeDir(String[] a){
+new File("${env.WORKSPACE}/testDir").write(xml)
+config["excludeDir"]+=a
+}
+def excludeFile(String[] a){
+new File("${env.WORKSPACE}/testFile").write(xml)
+config["excludeFile"]+=a
+}
+${dsl}
+""")
 //    use(com.brightwang.GeneralBuildXml) {
 //        new GroovyClassLoader().parseClass(dsl).newInstance().run()
 //    }
-    env.test=[]
-    env.xml=xml
-    new GroovyShell(binding,conf).evaluate(dsl)
-    println(env.xml)
-    //println(binding.getVariable('config')["excludeDir"].each {echo it})
+    println(binding.getVariable('config')["excludeDir"].each { echo it })
 }
 
 return this
