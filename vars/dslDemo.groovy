@@ -34,7 +34,8 @@ def call() {
         methodDefinitionAllowed = true // 用户能定义方法
         importsWhitelist = [] // 白名单为空意味着不允许导入
         staticImportsWhitelist = ['com.brightwang.GeneralBuildXml'] // 同样，对于静态导入也是这样
-        staticStarImportsWhitelist = ['java.lang.Math', 'java.lang.String', 'java.lang.Object', 'com.brightwang.GeneralBuildXml']
+        staticStarImportsWhitelist = ['java.lang.Math', 'java.lang.String', 'java.lang.Object', 'com.brightwang.GeneralBuildXml',
+        'excludeFile','excludeDir']
         // 用户能找到的令牌列表
         //org.codehaus.groovy.syntax.Types 中所定义的常量
         tokensWhitelist = [

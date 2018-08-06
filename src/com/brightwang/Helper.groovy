@@ -1,5 +1,6 @@
 package com.brightwang
 
+import com.sun.deploy.security.SandboxSecurity
 import groovy.json.JsonSlurperClassic
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.codehaus.groovy.control.customizers.SecureASTCustomizer
@@ -34,9 +35,8 @@ class Helper {
     }
 
     static Runner(conf, file) {
-        def c =this.classLoader.parseClass(file as File).newInstance()
-       def loader = new GroovyClassLoader(this.classLoader, conf)
-        loader.setResourceLoader(this.getClassLoader())
+        def c = this.classLoader.parseClass(file as File).newInstance()
+        def loader = new GroovyClassLoader(this.classLoader, conf)
 //        def c = loader.parseClass(file as File).newInstance()
         c.run()
     }
