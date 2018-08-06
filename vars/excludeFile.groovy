@@ -1,7 +1,7 @@
 def call(String[] files) {
-    def method = 'excludeFile'
-    g=env.generalBuildXml as com.brightwang.GeneralBuildXml
-    g."${method}"(files)
+    generalBuildXml=new com.brightwang.GeneralBuildXml(env.xml)
+    generalBuildXml.excludeFile(files)
+    env.xml=generalBuildXml.getXmlString()
 }
 
 return this

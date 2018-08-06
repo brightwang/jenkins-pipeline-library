@@ -72,9 +72,10 @@ def call() {
 //    use(com.brightwang.GeneralBuildXml) {
 //        new GroovyClassLoader().parseClass(dsl).newInstance().run()
 //    }
-    env.generalBuildXml=g
+    env.test=[]
+    env.xml=xml
     Helper.Runner("${env.WORKSPACE}/deploy.dsl")
-    println(g.getXmlString())
+    println(env.xml)
     //println(binding.getVariable('config')["excludeDir"].each {echo it})
 }
 
