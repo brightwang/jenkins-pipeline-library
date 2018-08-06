@@ -28,7 +28,7 @@ class Helper {
 
     static void Runner(file){
         use(GeneralBuildXml) {
-            new GroovyClassLoader().parseClass(file).newInstance().run()
+            new GroovyClassLoader().parseClass(file as File).newInstance().run()
         }
     }
 }
