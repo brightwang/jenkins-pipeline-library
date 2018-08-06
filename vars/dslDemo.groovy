@@ -53,7 +53,6 @@ def call() {
             "java.lang.Object", 'java.io.File', 'com.brightwang.GeneralBuildXml'
     ));
     conf.addCompilationCustomizers(customizer);
-//    println(new GroovyShell(binding))
     def d = new GroovyShell(this.class.classLoader, binding).evaluate("""\
 import com.brightwang.GeneralBuildXml
 config=["excludeDir":[],"excludeFile":[]]
@@ -69,11 +68,9 @@ config["excludeFile"].addAll(a)
 }
 ${dsl}
 """)
-//    use(com.brightwang.GeneralBuildXml) {
-//        new GroovyClassLoader().parseClass(dsl).newInstance().run()
-//    }
-    binding.getVariable('config')["excludeDir"].each { echo it }
-    load './deploy.dsl'
+    g.excludeDir(binding.getVariable('config')["excludeDir"])
+    g.excludeFile(binding.getVariable('config')["excludeFile"])
+    echo g.getXmlString()
 }
 
 return this
