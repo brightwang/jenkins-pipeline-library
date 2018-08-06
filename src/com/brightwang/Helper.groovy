@@ -1,6 +1,5 @@
 package com.brightwang
 
-import com.sun.deploy.security.SandboxSecurity
 import groovy.json.JsonSlurperClassic
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.codehaus.groovy.control.customizers.SecureASTCustomizer
