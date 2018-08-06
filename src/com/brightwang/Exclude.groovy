@@ -1,6 +1,6 @@
 package com.brightwang
 
 class Exclude {
-    def dirs(String[] dirs){}
-    def files(String[] files){}
+    def dir(String[] dirs){}
+    def file(String[] files){}
 }
