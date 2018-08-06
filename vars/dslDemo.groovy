@@ -69,7 +69,7 @@ config["excludeFile"].addAll(a)
 ${dsl}
 """)
     echo binding.getVariable('config')["excludeDir"].class.toString()
-    //g.excludeDir(binding.getVariable('config')["excludeDir"])
+    g.excludeDir(binding.getVariable('config')["excludeDir"])
     //g.excludeFile(binding.getVariable('config')["excludeFile"])
     echo g.getXmlString()
 }

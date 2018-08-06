@@ -10,7 +10,7 @@ class GeneralBuildXml {
         this.xmlNode = new XmlParser().parseText(xml)
     }
 
-    def excludeDir(String[] dirs) {
+    def excludeDir(dirs) {
         println("dir")
         dirs.each {
             def writer = new StringWriter()
@@ -21,10 +21,9 @@ class GeneralBuildXml {
             def fragmentNode = new XmlParser().parseText(fragment)
             target.children().add(fragmentNode)
         }
-        return this
     }
 
-    def excludeFile(String[] files) {
+    def excludeFile(files) {
         println('file')
         files.each {
             def writer = new StringWriter()
@@ -35,7 +34,6 @@ class GeneralBuildXml {
             def fragmentNode = new XmlParser().parseText(fragment)
             target.children().add(fragmentNode)
         }
-        return this
     }
 
     void transfer(closure){
