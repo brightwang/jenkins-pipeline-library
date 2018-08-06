@@ -69,7 +69,7 @@ def call() {
 //}
 //${dsl}
 //""")
-    def loader = new GroovyClassLoader(binding, conf)
+    def loader = new GroovyClassLoader(this.class.classLoader, conf)
     loader.parseClass(dsl).newInstance().run()
 
 //    env.test=[]
