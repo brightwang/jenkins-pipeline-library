@@ -54,19 +54,21 @@ def call() {
     ));
     conf.addCompilationCustomizers(customizer);
     def d = new GroovyShell(this.class.classLoader, binding).evaluate("""\
-import com.brightwang.GeneralBuildXml
-config=["excludeDir":[],"excludeFile":[]]
-
-xml=new File('${env.WORKSPACE}/build.xml').text
-def excludeDir(String[] a){
-new File("${env.WORKSPACE}/testDir").write(xml)
-config["excludeDir"].addAll(a)
-}
-def excludeFile(String[] a){
-new File("${env.WORKSPACE}/testFile").write(xml)
-config["excludeFile"].addAll(a)
-}
+//import com.brightwang.GeneralBuildXml
+//config=["excludeDir":[],"excludeFile":[]]
+//
+//xml=new File('${env.WORKSPACE}/build.xml').text
+//def excludeDir(String[] a){
+//new File("${env.WORKSPACE}/testDir").write(xml)
+//config["excludeDir"].addAll(a)
+//}
+//def excludeFile(String[] a){
+//new File("${env.WORKSPACE}/testFile").write(xml)
+//config["excludeFile"].addAll(a)
+//}
+use(GeneralBuildXml){
 ${dsl}
+}
 """)
     echo binding.getVariable('config')["excludeDir"].class.toString()
     g.excludeDir(binding.getVariable('config')["excludeDir"])
