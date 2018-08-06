@@ -50,7 +50,7 @@ def call() {
     }
 
     customizer.setReceiversWhiteList(Arrays.asList(
-            "java.lang.Object", 'java.io.File','com.brightwang.GeneralBuildXml'
+            "java.lang.Object", 'java.io.File', 'com.brightwang.GeneralBuildXml'
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
@@ -69,9 +69,9 @@ def call() {
 //}
 //${dsl}
 //""")
-    use(com.brightwang.GeneralBuildXml) {
-        new GroovyClassLoader(binding,conf).parseClass(dsl).newInstance().run()
-    }
+    def loader = new GroovyClassLoader(binding, conf)
+    loader.parseClass(dsl).newInstance().run()
+
 //    env.test=[]
 //    env.xml=xml
 //    new GroovyShell(binding,conf).evaluate(dsl)
