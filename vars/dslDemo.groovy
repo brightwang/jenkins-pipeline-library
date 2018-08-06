@@ -72,7 +72,7 @@ def call() {
         new GroovyClassLoader().parseClass(file).newInstance().run()
     }
     println(g.getXmlString())
-    println(binding.getVariable('config')["excludeDir"].each {echo it})
+    //println(binding.getVariable('config')["excludeDir"].each {echo it})
 }
 
 return this
