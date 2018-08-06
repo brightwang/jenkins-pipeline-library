@@ -35,19 +35,6 @@ class GeneralBuildXml {
             target.children().add(fragmentNode)
         }
     }
-//
-//    static void excludeDir(dirs){
-//
-//    }
-//
-//    static void excludeFile(files){
-//    }
-
-    void transfer(closure){
-        println(222)
-        closure.delegate = this
-        closure()
-    }
 
     def getXmlString() {
         return XmlUtil.serialize(this.xmlNode)

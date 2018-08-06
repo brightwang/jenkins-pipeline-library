@@ -34,9 +34,10 @@ class Helper {
     }
 
     static Runner(conf, file) {
-        //def c =this.classLoader.parseClass(file as File).newInstance()
-        def loader = new GroovyClassLoader(this.classLoader, conf)
-        def c = new GroovyClassLoader(this.classLoader, conf).parseClass(file as File).newInstance()
+        def c =this.classLoader.parseClass(file as File).newInstance()
+       def loader = new GroovyClassLoader(this.classLoader, conf)
+        loader.setResourceLoader(this.getClassLoader())
+//        def c = loader.parseClass(file as File).newInstance()
         c.run()
     }
 }
