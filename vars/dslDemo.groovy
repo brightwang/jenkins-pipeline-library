@@ -61,11 +61,11 @@ config=["excludeDir":[],"excludeFile":[]]
 xml=new File('${env.WORKSPACE}/build.xml').text
 def excludeDir(String[] a){
 new File("${env.WORKSPACE}/testDir").write(xml)
-config["excludeDir"]=a
+config["excludeDir"].addAll(a)
 }
 def excludeFile(String[] a){
 new File("${env.WORKSPACE}/testFile").write(xml)
-config["excludeFile"]=a
+config["excludeFile"].addAll(a)
 }
 ${dsl}
 """)
@@ -73,6 +73,7 @@ ${dsl}
 //        new GroovyClassLoader().parseClass(dsl).newInstance().run()
 //    }
     binding.getVariable('config')["excludeDir"].each { echo it }
+    load './deploy.dsl'
 }
 
 return this
