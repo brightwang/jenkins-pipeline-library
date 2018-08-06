@@ -70,7 +70,7 @@ def call() {
 //${dsl}
 //""")
     use(com.brightwang.GeneralBuildXml) {
-        new GroovyClassLoader().parseClass(dsl).newInstance().run()
+        new GroovyClassLoader(binding,conf).parseClass(dsl).newInstance().run()
     }
 //    env.test=[]
 //    env.xml=xml
