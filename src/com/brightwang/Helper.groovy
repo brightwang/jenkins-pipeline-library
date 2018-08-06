@@ -28,9 +28,8 @@ class Helper {
 
     static Runner(file){
         use(GeneralBuildXml) {
-            new GroovyClassLoader().parseClass(file as File).newInstance().run()
-            //excludeFile("")
-            //excludeDir("")
+            //new GroovyClassLoader().parseClass(file as File).newInstance().run()
+            "".excludeDir()
         }
     }
 }
