@@ -74,7 +74,7 @@ def call() {
 
     env.test=[]
     env.xml=xml
-    Helper.Runner("${env.WORKSPACE}/deploy.dsl")
+    Helper.Runner(conf,"${env.WORKSPACE}/deploy.dsl")
     println(env.xml)
 //    env.test=[]
 //    env.xml=xml
