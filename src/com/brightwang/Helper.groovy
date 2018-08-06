@@ -29,6 +29,7 @@ class Helper {
     static void Runner(file){
         use(GeneralBuildXml) {
             loader= new GroovyClassLoader()
+            loader.loadClass('com.igg.Helper')
             loader.loadClass('com.igg.GeneralBuildXml')
             new GroovyClassLoader().parseClass(file as File).newInstance().run()
             //excludeFile("")
