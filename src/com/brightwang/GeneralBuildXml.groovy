@@ -38,14 +38,6 @@ class GeneralBuildXml {
         return this
     }
 
-    static void excludeDir(String dirs){
-
-    }
-
-    static void excludeFile(String files){
-
-    }
-
     void transfer(closure){
         println(222)
         closure.delegate = this
