@@ -30,7 +30,6 @@ class Helper {
         use(GeneralBuildXml) {
             def c= this.classLoader.parseClass(file as File).newInstance()
             c.run()
-            //this.classLoader.parseClass(file as File).newInstance().run()
         }
     }
 }
