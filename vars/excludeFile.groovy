@@ -1,4 +1,4 @@
-def call(files){
+def call(String[] files){
 
 }
 

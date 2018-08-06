@@ -1,4 +1,4 @@
-def call(dirs){
+def call(String[] dirs){
 
 }
 
