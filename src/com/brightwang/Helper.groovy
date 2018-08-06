@@ -6,6 +6,8 @@ import org.codehaus.groovy.control.customizers.SecureASTCustomizer
 
 import static org.codehaus.groovy.syntax.Types.EQUAL
 import static org.codehaus.groovy.syntax.Types.PLUS_PLUS
+import org.codehaus.groovy.runtime.MethodClosure
+
 
 class Helper {
     static def parseJsonToMap(String json) {
