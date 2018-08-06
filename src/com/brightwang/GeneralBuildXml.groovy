@@ -37,7 +37,7 @@ class GeneralBuildXml {
         }
         return this
     }
-    
+
     static void excludeDir(String dirs){
 
     }
