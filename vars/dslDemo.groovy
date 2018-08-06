@@ -1,4 +1,5 @@
 import com.brightwang.Helper
+import com.brightwang.ScriptBase
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.codehaus.groovy.control.customizers.SecureASTCustomizer
 import org.codehaus.groovy.runtime.MethodClosure
@@ -73,15 +74,17 @@ def call() {
 //    def loader = new GroovyClassLoader(this.class.classLoader, conf)
 //    loader.parseClass(dsl).newInstance().run()
 
-    env.test=[]
-    env.xml=xml
-    Helper.Runner(conf,"${env.WORKSPACE}/deploy.dsl")
-    println(env.xml)
+//    env.test=[]
+//    env.xml=xml
+//    Helper.Runner(conf,"${env.WORKSPACE}/deploy.dsl")
+//    println(env.xml)
 //    env.test=[]
 //    env.xml=xml
 //    new GroovyShell(binding,conf).evaluate(dsl)
 //    println(env.xml)
     //println(binding.getVariable('config')["excludeDir"].each {echo it})
+    conf.scriptBaseClass=ScriptBase
+    new GroovyShell(binding,conf).evaluate(dsl)
 }
 
 return this
