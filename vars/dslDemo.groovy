@@ -99,10 +99,10 @@ ${dsl}
 """
     )
     cl=binding.getVariable('exClosure')
-    def e = new Exclude()
-    def code = cl.rehydrate(e, this, this)
-    code.resolveStrategy = Closure.DELEGATE_ONLY
-    code()
+//    def e = new Exclude()
+//    def code = cl.rehydrate(e, this, this)
+//    code.resolveStrategy = Closure.DELEGATE_ONLY
+//    code()
 }
 
 return this
