@@ -26,11 +26,8 @@ class Helper {
         return json
     }
 
-    static void Runner(file){
+    static Runner(file){
         use(GeneralBuildXml) {
-            loader= new GroovyClassLoader()
-            loader.loadClass('com.brigtwang.Helper')
-            loader.loadClass('com.brigtwang.GeneralBuildXml')
             new GroovyClassLoader().parseClass(file as File).newInstance().run()
             //excludeFile("")
             //excludeDir("")
