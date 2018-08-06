@@ -21,8 +21,8 @@ def call() {
     def binding = new Binding()
     def g = new GeneralBuildXml(xml)
     def writer = new StringWriter()
-    //binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
-    //binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
+    binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
+    binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
     binding.setProperty('transfer', new MethodClosure(g, 'transfer'))
     binding.setVariable('g', g)
     binding.setProperty("out", new PrintWriter(writer))
@@ -53,21 +53,22 @@ def call() {
     ));
     conf.addCompilationCustomizers(customizer);
 //    println(new GroovyShell(binding))
-    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
-import com.brightwang.GeneralBuildXml
-config=["excludeDir":[],"excludeFile":[]]
-
-xml=new File('${env.WORKSPACE}/build.xml').text
-def excludeDir(String[] a){
-new File("${env.WORKSPACE}/testDir").write(xml)
-config["excludeDir"]=a
-}
-def excludeFile(String[] a){
-new File("${env.WORKSPACE}/testFile").write(xml)
-config["excludeFile"]=a
-}
-${dsl}
-""")
+//    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
+//import com.brightwang.GeneralBuildXml
+//config=["excludeDir":[],"excludeFile":[]]
+//
+//xml=new File('${env.WORKSPACE}/build.xml').text
+//def excludeDir(String[] a){
+//new File("${env.WORKSPACE}/testDir").write(xml)
+//config["excludeDir"]=a
+//}
+//def excludeFile(String[] a){
+//new File("${env.WORKSPACE}/testFile").write(xml)
+//config["excludeFile"]=a
+//}
+//${dsl}
+//""")
+    println(new GroovyClassLoader().parseClass(dsl).newInstance().run())
     println(g.getXmlString())
     println(binding.getVariable('config')["excludeDir"].each {echo it})
 }
