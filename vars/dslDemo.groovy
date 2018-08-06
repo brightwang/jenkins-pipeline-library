@@ -19,7 +19,7 @@ def call() {
     env.WORKSPACE = pwd()
     file = new File("${env.WORKSPACE}/deploy.dsl")
     dsl = file.text
-    def binding = new Binding([self: owner])
+    def binding = new Binding()
     def g = new GeneralBuildXml(xml)
     def writer = new StringWriter()
     //binding.setProperty('excludeDir', new MethodClosure(excludeDir, 'excludeDir'))
