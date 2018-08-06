@@ -22,8 +22,8 @@ def call() {
     def binding = new Binding()
     def g = new GeneralBuildXml(xml)
     def writer = new StringWriter()
-    binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
-    binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
+    //binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
+    //binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
     binding.setProperty('transfer', new MethodClosure(g, 'transfer'))
     binding.setVariable('g', g)
     binding.setProperty("out", new PrintWriter(writer))
@@ -74,7 +74,7 @@ def call() {
 //    }
     env.test=[]
     env.xml=xml
-    Helper.Runner("${env.WORKSPACE}/deploy.dsl")
+    new GroovyShell(binding,conf).evaluate(dsl)
     println(env.xml)
     //println(binding.getVariable('config')["excludeDir"].each {echo it})
 }
