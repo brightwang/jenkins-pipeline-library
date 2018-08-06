@@ -28,7 +28,12 @@ class Helper {
 
     static Runner(file){
         use(GeneralBuildXml) {
-            this.classLoader.parseClass(file as File).newInstance().run()
+            def c= this.classLoader.parseClass(file as File).newInstance()
+            c.metaClass.excludeDir=
+              delegate  GeneralBuildXml.excludeFile
+
+            c.run()
+            //this.classLoader.parseClass(file as File).newInstance().run()
         }
     }
 }
