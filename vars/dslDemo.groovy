@@ -84,7 +84,10 @@ def call() {
 //    println(env.xml)
     //println(binding.getVariable('config')["excludeDir"].each {echo it})
     conf.scriptBaseClass=ScriptBase
-    new GroovyShell(this.class.classLoader,binding,conf).evaluate(dsl)
+    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""\
+import  com.brightwang.ScriptBase 
+${dsl}
+""")
 }
 
 return this
