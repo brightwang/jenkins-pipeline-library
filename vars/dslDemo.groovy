@@ -72,7 +72,7 @@ ${dsl}
 //    use(com.brightwang.GeneralBuildXml) {
 //        new GroovyClassLoader().parseClass(dsl).newInstance().run()
 //    }
-    println(binding.getVariable('config')["excludeDir"].each { echo it })
+    binding.getVariable('config')["excludeDir"].each { echo it }
 }
 
 return this
