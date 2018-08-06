@@ -1,3 +1,4 @@
+import com.brightwang.Helper
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.codehaus.groovy.control.customizers.SecureASTCustomizer
 import org.codehaus.groovy.runtime.MethodClosure
@@ -68,9 +69,10 @@ def call() {
 //}
 //${dsl}
 //""")
-    use(com.brightwang.GeneralBuildXml) {
-        new GroovyClassLoader().parseClass(dsl).newInstance().run()
-    }
+//    use(com.brightwang.GeneralBuildXml) {
+//        new GroovyClassLoader().parseClass(dsl).newInstance().run()
+//    }
+    Helper.Runner(file)
     println(g.getXmlString())
     //println(binding.getVariable('config')["excludeDir"].each {echo it})
 }

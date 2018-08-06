@@ -25,4 +25,10 @@ class Helper {
         def json = groovy.json.JsonOutput.toJson(data)
         return json
     }
+
+    static void Runner(file){
+        use(GeneralBuildXml) {
+            new GroovyClassLoader().parseClass(file).newInstance().run()
+        }
+    }
 }
