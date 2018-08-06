@@ -69,7 +69,7 @@ def call() {
 //${dsl}
 //""")
     use(com.brightwang.GeneralBuildXml) {
-        new GroovyClassLoader().parseClass(file).newInstance().run()
+        new GroovyClassLoader().parseClass(dsl).newInstance().run()
     }
     println(g.getXmlString())
     //println(binding.getVariable('config')["excludeDir"].each {echo it})
