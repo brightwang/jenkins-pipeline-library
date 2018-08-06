@@ -1,3 +1,4 @@
+import com.brightwang.Exclude
 import com.brightwang.Helper
 import com.brightwang.ScriptBase
 import org.codehaus.groovy.control.CompilerConfiguration
@@ -90,16 +91,18 @@ def call() {
 //""")
     new GroovyShell(this.class.classLoader,binding,conf).evaluate("""
 import com.brightwang.Exclude
-
+exClosure=null
 def exclude(Closure cl){
-    e=new Exclude()
-    def code = cl.rehydrate(e, this, this)
-    code.resolveStrategy = Closure.DELEGATE_ONLY
-    code()
+    exClosure=cl
 }
 ${dsl}
 """
     )
+    cl=binding.getVariable('exClosure')
+    def e = new Exclude()
+    def code = cl.rehydrate(e, this, this)
+    code.resolveStrategy = Closure.DELEGATE_ONLY
+    code()
 }
 
 return this
