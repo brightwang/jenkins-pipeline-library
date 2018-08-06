@@ -29,6 +29,7 @@ class Helper {
     static Runner(file){
         use(GeneralBuildXml) {
             def c= this.classLoader.parseClass(file as File).newInstance()
+            c.loadClass('com.brightwang.GeneralBuildXml')
             c.run()
             //this.classLoader.parseClass(file as File).newInstance().run()
         }
