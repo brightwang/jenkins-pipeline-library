@@ -26,8 +26,6 @@ def call() {
     def writer = new StringWriter()
     //binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
     //binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
-    binding.setProperty('transfer', new MethodClosure(g, 'transfer'))
-    binding.setVariable('g', g)
     binding.setProperty("out", new PrintWriter(writer))
     CompilerConfiguration conf = new CompilerConfiguration();
     SecureASTCustomizer customizer = new SecureASTCustomizer();
@@ -50,6 +48,7 @@ def call() {
                 Object.class,
                 GeneralBuildXml.class
         ].asImmutable()
+        constantTypesBlackList=['writeFile']
     }
 
     customizer.setReceiversWhiteList(Arrays.asList(
