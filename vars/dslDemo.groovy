@@ -24,8 +24,8 @@ def call() {
     def binding = new Binding()
     def g = new GeneralBuildXml(xml)
     def writer = new StringWriter()
-    binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
-    binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
+    //binding.setProperty('excludeDir', new MethodClosure(g, 'excludeDir'))
+    //binding.setProperty('excludeFile', new MethodClosure(g, 'excludeFile'))
     binding.setProperty('transfer', new MethodClosure(g, 'transfer'))
     binding.setVariable('g', g)
     binding.setProperty("out", new PrintWriter(writer))
@@ -79,8 +79,9 @@ def call() {
 //    echo loader.loadClass('excludeFile').toString()
 //    loader.parseClass(dsl).newInstance().run()
 
-    GroovyScriptEngine gse = new GroovyScriptEngine(new String()[]);
-    gse.run("${env.WORKSPACE}/deploy.dsl", binding);
+    this.class.classLoader.parseClass(dsl).newInstance().run()
+    //GroovyScriptEngine gse = new GroovyScriptEngine(new String()[]);
+    //gse.run("${env.WORKSPACE}/deploy.dsl", binding);
 
 //    env.test=[]
 //    env.xml=xml
