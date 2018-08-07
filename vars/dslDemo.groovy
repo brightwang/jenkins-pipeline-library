@@ -80,7 +80,7 @@ def call() {
 //    loader.parseClass(dsl).newInstance().run()
 
     GroovyScriptEngine gse = new GroovyScriptEngine([],this.classLoader);
-    gse.run("GroovyShellHellow.groovy", binding);
+    gse.run(${env.WORKSPACE}/deploy.dsl, binding);
 
 //    env.test=[]
 //    env.xml=xml
