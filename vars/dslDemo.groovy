@@ -112,6 +112,7 @@ def call() {
 //    def code = cl.rehydrate(e, this, this)
 //    code.resolveStrategy = Closure.DELEGATE_ONLY
 //    code()
+    return g.getXmlString()
 }
 
 return this
