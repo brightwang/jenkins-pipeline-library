@@ -73,13 +73,16 @@ def call() {
 //${dsl}
 //""")
     echo getClass().protectionDomain.codeSource.location.path
-//    def loader = new GroovyClassLoader(this.class.classLoader, conf)
+    def loader = new GroovyClassLoader(this.class.classLoader, conf)
+    loader.addClasspath(new File(repo.workspace,"src").toURI().toURL())
 //    loader.addClasspath('')
 //    echo loader.loadClass('excludeDir').toString()
 //    echo loader.loadClass('excludeFile').toString()
 //    loader.parseClass(dsl).newInstance().run()
 
-    this.class.classLoader.parseClass(dsl).newInstance().run()
+    //this.class.classLoader.parseClass(dsl).newInstance().run()
+    loader.parseClass(dsl).newInstance().run()
+
     //GroovyScriptEngine gse = new GroovyScriptEngine(new String()[]);
     //gse.run("${env.WORKSPACE}/deploy.dsl", binding);
 
