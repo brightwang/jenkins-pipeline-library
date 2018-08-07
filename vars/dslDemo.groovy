@@ -54,6 +54,7 @@ def call() {
     ));
     conf.addCompilationCustomizers(customizer);
     new GroovyShell(new GroovyClassLoader(this.class.classLoader),binding,conf).parse(dsl)
+    new GroovyShell(binding).parse(dsl)
     //println(new GroovyShell(binding))
 //    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
 //import com.brightwang.GeneralBuildXml
