@@ -55,10 +55,10 @@ def call() {
     conf.addCompilationCustomizers(customizer);
     new GroovyShell(new GroovyClassLoader(this.class.classLoader),binding,conf).parse(dsl)
     new GroovyShell(binding).evaluate("""\
-def excludeDir(){
+def excludeDir(String[] dir){
 
 }
-def excludeFile(){
+def excludeFile(String[] file){
 
 }
 ${dsl}
