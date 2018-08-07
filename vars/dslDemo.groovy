@@ -72,8 +72,8 @@ def call() {
 //}
 //${dsl}
 //""")
-//    def loader = new GroovyClassLoader(this.class.classLoader, conf)
-//    loader.parseClass(dsl).newInstance().run()
+    def loader = new GroovyClassLoader(this.class.classLoader, conf)
+    loader.parseClass(dsl).newInstance().run()
 
 //    env.test=[]
 //    env.xml=xml
@@ -89,16 +89,18 @@ def call() {
 //import  com.brightwang.ScriptBase
 //${dsl}
 //""")
-    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""
-import com.brightwang.Exclude
-exClosure=null
-def exclude(Closure cl){
-    exClosure=cl
-}
-${dsl}
-"""
-    )
-    cl=binding.getVariable('exClosure')
+//    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""
+//import com.brightwang.Exclude
+//exClosure=null
+//def exclude(Closure cl){
+//    exClosure=cl
+//}
+//${dsl}
+//"""
+//    )
+//    cl=binding.getVariable('exClosure')
+
+
 //    def e = new Exclude()
 //    def code = cl.rehydrate(e, this, this)
 //    code.resolveStrategy = Closure.DELEGATE_ONLY
