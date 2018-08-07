@@ -10,7 +10,7 @@ class GeneralBuildXml {
         this.xmlNode = new XmlParser().parseText(xml)
     }
 
-    def excludeDir(dirs) {
+    def excludeDir(String[] dirs) {
         println("dir")
         dirs.each {
             def writer = new StringWriter()
@@ -23,7 +23,7 @@ class GeneralBuildXml {
         }
     }
 
-    def excludeFile(files) {
+    def excludeFile(String[] files) {
         println('file')
         files.each {
             def writer = new StringWriter()
