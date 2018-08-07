@@ -73,7 +73,8 @@ def call() {
 //${dsl}
 //""")
     def loader = new GroovyClassLoader(this.class.classLoader, conf)
-    this.class.classLoader.parseClass(dsl).newInstance().run()
+    loader.loadedClasses(this.class.classLoader.getLoadedClasses())
+    loader.parseClass(dsl).newInstance().run()
 
 //    env.test=[]
 //    env.xml=xml
