@@ -73,11 +73,14 @@ def call() {
 //${dsl}
 //""")
     echo getClass().protectionDomain.codeSource.location.path
-    def loader = new GroovyClassLoader(this.class.classLoader, conf)
-    loader.addClasspath('')
-    echo loader.loadClass('excludeDir').toString()
-    echo loader.loadClass('excludeFile').toString()
-    loader.parseClass(dsl).newInstance().run()
+//    def loader = new GroovyClassLoader(this.class.classLoader, conf)
+//    loader.addClasspath('')
+//    echo loader.loadClass('excludeDir').toString()
+//    echo loader.loadClass('excludeFile').toString()
+//    loader.parseClass(dsl).newInstance().run()
+
+    GroovyScriptEngine gse = new GroovyScriptEngine([],this.classLoader);
+    gse.run("GroovyShellHellow.groovy", binding);
 
 //    env.test=[]
 //    env.xml=xml
