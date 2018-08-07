@@ -79,7 +79,7 @@ def call() {
 //    echo loader.loadClass('excludeFile').toString()
 //    loader.parseClass(dsl).newInstance().run()
 
-    GroovyScriptEngine gse = new GroovyScriptEngine([]);
+    GroovyScriptEngine gse = new GroovyScriptEngine(new String()[]);
     gse.run("${env.WORKSPACE}/deploy.dsl", binding);
 
 //    env.test=[]
