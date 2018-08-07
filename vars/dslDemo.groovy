@@ -74,7 +74,7 @@ def call() {
 //""")
     echo getClass().protectionDomain.codeSource.location.path
     def loader = new GroovyClassLoader(this.class.classLoader, conf)
-    loader.addClasspath(new File(repo.workspace,"src").toURI().toURL())
+    loader.addClasspath(new File(getClass().protectionDomain.codeSource.location.path).toURI().toURL())
 //    loader.addClasspath('')
 //    echo loader.loadClass('excludeDir').toString()
 //    echo loader.loadClass('excludeFile').toString()
