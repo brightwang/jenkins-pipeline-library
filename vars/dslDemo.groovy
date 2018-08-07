@@ -30,33 +30,34 @@ def call() {
     binding.setVariable('g', g)
     binding.setProperty("out", new PrintWriter(writer))
     CompilerConfiguration conf = new CompilerConfiguration();
-//    SecureASTCustomizer customizer = new SecureASTCustomizer();
-//    customizer.with {
-//        closuresAllowed = true // 用户能写闭包
-//        methodDefinitionAllowed = true // 用户能定义方法
-//        importsWhitelist = [] // 白名单为空意味着不允许导入
-//        staticImportsWhitelist = ['com.brightwang.GeneralBuildXml'] // 同样，对于静态导入也是这样
-//        staticStarImportsWhitelist = ['java.lang.Math', 'java.lang.String', 'java.lang.Object', 'com.brightwang.GeneralBuildXml',
-//        'excludeFile','excludeDir']
-//        // 用户能找到的令牌列表
-//        //org.codehaus.groovy.syntax.Types 中所定义的常量
-//        tokensWhitelist = [
-//                PLUS_PLUS,
-//                EQUAL
-//        ].asImmutable()
-//        //将用户所能定义的常量类型限制为数值类型
-//        constantTypesClassesWhiteList = [
-//                String.class,
-//                Object.class,
-//                GeneralBuildXml.class
-//        ].asImmutable()
-//    }
-//
-//    customizer.setReceiversWhiteList(Arrays.asList(
-//            "java.lang.Object", 'java.io.File', 'com.brightwang.GeneralBuildXml'
-//    ));
-//    conf.addCompilationCustomizers(customizer);
-//    println(new GroovyShell(binding))
+    SecureASTCustomizer customizer = new SecureASTCustomizer();
+    customizer.with {
+        closuresAllowed = true // 用户能写闭包
+        methodDefinitionAllowed = true // 用户能定义方法
+        importsWhitelist = [] // 白名单为空意味着不允许导入
+        staticImportsWhitelist = ['com.brightwang.GeneralBuildXml'] // 同样，对于静态导入也是这样
+        staticStarImportsWhitelist = ['java.lang.Math', 'java.lang.String', 'java.lang.Object', 'com.brightwang.GeneralBuildXml',
+        'excludeFile','excludeDir']
+        // 用户能找到的令牌列表
+        //org.codehaus.groovy.syntax.Types 中所定义的常量
+        tokensWhitelist = [
+                PLUS_PLUS,
+                EQUAL
+        ].asImmutable()
+        //将用户所能定义的常量类型限制为数值类型
+        constantTypesClassesWhiteList = [
+                String.class,
+                Object.class,
+                GeneralBuildXml.class
+        ].asImmutable()
+    }
+
+    customizer.setReceiversWhiteList(Arrays.asList(
+            "java.lang.Object", 'java.io.File', 'com.brightwang.GeneralBuildXml'
+    ));
+    conf.addCompilationCustomizers(customizer);
+    new GroovyShell(this.classLoader,binding,conf).parse(dsl)
+    //println(new GroovyShell(binding))
 //    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
 //import com.brightwang.GeneralBuildXml
 //config=["excludeDir":[],"excludeFile":[]]
@@ -72,16 +73,16 @@ def call() {
 //}
 //${dsl}
 //""")
-    echo getClass().protectionDomain.codeSource.location.path
-    def loader = new GroovyClassLoader(this.class.classLoader, conf)
-    loader.addURL(new File(getClass().protectionDomain.codeSource.location.path).toURI().toURL())
+//    echo getClass().protectionDomain.codeSource.location.path
+//    def loader = new GroovyClassLoader(this.class.classLoader, conf)
+//    loader.addURL(new File(getClass().protectionDomain.codeSource.location.path).toURI().toURL())
 //    loader.addClasspath('')
 //    echo loader.loadClass('excludeDir').toString()
 //    echo loader.loadClass('excludeFile').toString()
 //    loader.parseClass(dsl).newInstance().run()
 
-    //this.class.classLoader.parseClass(dsl).newInstance().run()
-    loader.parseClass(dsl).newInstance().run()
+    this.class.classLoader.parseClass(dsl).newInstance().run()
+    //loader.parseClass(dsl).newInstance().run()
 
     //GroovyScriptEngine gse = new GroovyScriptEngine(new String()[]);
     //gse.run("${env.WORKSPACE}/deploy.dsl", binding);
@@ -110,7 +111,6 @@ def call() {
 //"""
 //    )
 //    cl=binding.getVariable('exClosure')
-
 
 //    def e = new Exclude()
 //    def code = cl.rehydrate(e, this, this)
