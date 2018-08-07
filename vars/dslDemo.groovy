@@ -72,9 +72,11 @@ def call() {
 //}
 //${dsl}
 //""")
+    echo getClass().protectionDomain.codeSource.location.path
     def loader = new GroovyClassLoader(this.class.classLoader, conf)
-    loader.loadClass('excludeDir')
-    loader.loadClass('excludeFile')
+    loader.addClasspath('')
+    echo loader.loadClass('excludeDir').toString()
+    echo loader.loadClass('excludeFile').toString()
     loader.parseClass(dsl).newInstance().run()
 
 //    env.test=[]
