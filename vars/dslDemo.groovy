@@ -53,8 +53,8 @@ def call() {
             "java.lang.Object",'com.brightwang.GeneralBuildXml'
     ));
     conf.addCompilationCustomizers(customizer);
-    new GroovyShell(new GroovyClassLoader(this.class.classLoader),binding,conf).parse(dsl)
-    new GroovyShell(binding).evaluate("""\
+    //new GroovyShell(binding,conf).parse(dsl)
+    new GroovyShell(new GroovyClassLoader(this.class.classLoader),binding,conf).evaluate("""\
 def excludeDir(String[] dir){
 
 }
