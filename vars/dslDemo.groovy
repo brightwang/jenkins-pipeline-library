@@ -19,7 +19,7 @@ def call() {
 </project>
 """
     env.WORKSPACE = pwd()
-    file = new File("${env.WORKSPACE}/deploy_cl.dsl")
+    file = new File("${env.WORKSPACE}/deploy.dsl")
     dsl = file.text
     def binding = new Binding()
     def g = new GeneralBuildXml(xml)
