@@ -53,7 +53,7 @@ def call() {
             "java.lang.Object",'com.brightwang.GeneralBuildXml'
     ));
     conf.addCompilationCustomizers(customizer);
-    new GroovyShell(this.class.classLoader,binding,conf).parse(dsl)
+    new GroovyShell(new GroovyClassLoader(this.class.classLoader),binding,conf).parse(dsl)
     //println(new GroovyShell(binding))
 //    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
 //import com.brightwang.GeneralBuildXml
