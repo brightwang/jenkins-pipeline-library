@@ -53,7 +53,7 @@ def call() {
     }
 
     customizer.setReceiversWhiteList(Arrays.asList(
-            "java.lang.Object", 'java.io.File', 'com.brightwang.GeneralBuildXml'
+            "java.lang.Object",'com.brightwang.GeneralBuildXml'
     ));
     conf.addCompilationCustomizers(customizer);
     new GroovyShell(this.class.classLoader,binding,conf).parse(dsl)
