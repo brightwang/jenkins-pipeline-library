@@ -36,6 +36,16 @@ class GeneralBuildXml {
         }
     }
 
+    def phpUnit(String command){
+        def writer = new StringWriter()
+        def builder = new MarkupBuilder(writer);
+        builder.exec("command": "phpunit ${command}","checkreturn":"true","logoutput":"true","dir":'${build.dir}/')
+        def target = this.xmlNode.findAll { it.attribute("name") == "build:phpunit" }[0]
+        def fragment = writer.toString()
+        def fragmentNode = new XmlParser().parseText(fragment)
+        target.children().add(fragmentNode)
+    }
+
     def getXmlString() {
         return XmlUtil.serialize(this.xmlNode)
     }

@@ -61,67 +61,11 @@ def excludeDir(String[] dir){
 def excludeFile(String[] file){
 
 }
+    def phpUnit(String command){}
 ${dsl}
 """)
-    //println(new GroovyShell(binding))
-//    def d = new GroovyShell(this.class.classLoader,binding).evaluate("""\
-//import com.brightwang.GeneralBuildXml
-//config=["excludeDir":[],"excludeFile":[]]
-//
-//xml=new File('${env.WORKSPACE}/build.xml').text
-//def excludeDir(String[] a){
-//new File("${env.WORKSPACE}/testDir").write(xml)
-//config["excludeDir"]=a
-//}
-//def excludeFile(String[] a){
-//new File("${env.WORKSPACE}/testFile").write(xml)
-//config["excludeFile"]=a
-//}
-//${dsl}
-//""")
-//    echo getClass().protectionDomain.codeSource.location.path
-//    def loader = new GroovyClassLoader(this.class.classLoader, conf)
-//    loader.addURL(new File(getClass().protectionDomain.codeSource.location.path).toURI().toURL())
-//    loader.addClasspath('')
-//    echo loader.loadClass('excludeDir').toString()
-//    echo loader.loadClass('excludeFile').toString()
-//    loader.parseClass(dsl).newInstance().run()
 
     this.class.classLoader.parseClass(dsl).newInstance().run()
-    //loader.parseClass(dsl).newInstance().run()
-
-    //GroovyScriptEngine gse = new GroovyScriptEngine(new String()[]);
-    //gse.run("${env.WORKSPACE}/deploy.dsl", binding);
-
-//    env.test=[]
-//    env.xml=xml
-//    Helper.Runner(conf,"${env.WORKSPACE}/deploy.dsl")
-//    println(env.xml)
-//    env.test=[]
-//    env.xml=xml
-//    new GroovyShell(binding,conf).evaluate(dsl)
-//    println(env.xml)
-    //println(binding.getVariable('config')["excludeDir"].each {echo it})
-//    conf.scriptBaseClass='ScriptBase'
-//    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""\
-//import  com.brightwang.ScriptBase
-//${dsl}
-//""")
-//    new GroovyShell(this.class.classLoader,binding,conf).evaluate("""
-//import com.brightwang.Exclude
-//exClosure=null
-//def exclude(Closure cl){
-//    exClosure=cl
-//}
-//${dsl}
-//"""
-//    )
-//    cl=binding.getVariable('exClosure')
-
-//    def e = new Exclude()
-//    def code = cl.rehydrate(e, this, this)
-//    code.resolveStrategy = Closure.DELEGATE_ONLY
-//    code()
     echo g.getXmlString()
     return g.getXmlString()
 }
